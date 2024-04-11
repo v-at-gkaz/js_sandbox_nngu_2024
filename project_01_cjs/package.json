@@ -1,0 +1,19 @@
+{
+  "name": "project_01_cjs",
+  "type": "commonjs",
+  "version": "1.0.0",
+  "description": "The Project 01",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
