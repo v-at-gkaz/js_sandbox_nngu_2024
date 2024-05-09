@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "d42476ff-b700-4b3f-87d7-64f1fc95fe12",
+		"name": "project05_express",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34825817"
+	},
+	"item": [
+		{
+			"name": "Получение всех контактов",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/contacts",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение контакта",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/contacts/{{id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"contacts",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание контакта",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Ivanov Ivan\",\n    \"phone\": \"89998886655\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/contacts",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Изменение контакта",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Иванов Иван\",\n    \"phone\": \"89998886666\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/contacts/{{id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"contacts",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление контакта",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/contacts/{{id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"contacts",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
