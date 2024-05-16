@@ -1,0 +1,56 @@
+version: '3.1'
+
+services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=root123456
+      - MARIADB_DATABASE=db
+      - MARIADB_USER=dbuser
+      - MARIADB_PASSWORD=dbpass123456
+    ports:
+      - "3306:3306"
+    command:
+      - --max-allowed-packet=1073741824 #1 GB
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_HOST=mariadb
+      - UPLOAD_LIMIT=1G
+      - MEMORY_LIMIT=2G
+      # - PMA_USER=root
+      # - PMA_PASSWORD=root
+    depends_on:
+      - mariadb
+
+  postgres:
+    container_name: postgres
+    image: postgres:16
+    restart: always
+    environment:
+      - POSTGRES_USER=pguser
+      - POSTGRES_PASSWORD=pgpass123456
+      - POSTGRES_DB=db
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - 8090:8080
+    environment:
+      - PGADMIN_LISTEN_ADDRESS=0.0.0.0
+      - PGADMIN_LISTEN_PORT=8080
+      - PGADMIN_DEFAULT_EMAIL=admin@srv.pg
+      - PGADMIN_DEFAULT_PASSWORD=admin@srv.pgPass
