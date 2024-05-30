@@ -3,7 +3,7 @@ version: '3.1'
 services:
   mariadb:
     container_name: mariadb
-    image: mariadb
+    image: dockerhub.timeweb.cloud/library/mariadb
     restart: always
     environment:
       - MARIADB_ROOT_PASSWORD=root123456
@@ -17,7 +17,7 @@ services:
 
   phpmyadmin:
     container_name: phpmyadmin
-    image: phpmyadmin
+    image: dockerhub.timeweb.cloud/library/phpmyadmin
     restart: always
     ports:
       - "8080:80"
@@ -32,7 +32,7 @@ services:
 
   postgres:
     container_name: postgres
-    image: postgres:16
+    image: dockerhub.timeweb.cloud/library/postgres:16
     restart: always
     environment:
       - POSTGRES_USER=pguser
@@ -45,7 +45,7 @@ services:
 
   pgadmin:
     container_name: pgadmin
-    image: dpage/pgadmin4
+    image: dockerhub.timeweb.cloud/dpage/pgadmin4
     restart: always
     ports:
       - 8090:8080
