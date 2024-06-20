@@ -165,7 +165,6 @@ class DatabaseService {
 
         this.sequelize.authenticate().then(() => {
             console.log('Connection With Database Established Successfully.');
-
             if (syncDatabase) {
                 console.warn('SYNC DB DETECTED!!!');
                 // this.sequelize.sync();

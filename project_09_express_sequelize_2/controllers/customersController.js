@@ -1,8 +1,8 @@
-import ProductsService from "../services/productsService.js";
+import CustomersService from "../services/customersService.js";
 
-const srv = new ProductsService();
+const srv = new CustomersService();
 
-export default class ProductsController {
+export default class CustomersController {
     get = async (req, res) => {
         const response = await srv.getAll();
         if(response.status === 'error') {
@@ -14,7 +14,6 @@ export default class ProductsController {
 
     getOne = async (req, res) => {
         const response = await srv.getOne(+req.params.id);
-        console.log('get one>>>', response);
         if(response.status === 'error') {
             res.status(500).send(response.data);
         } else {
