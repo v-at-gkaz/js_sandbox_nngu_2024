@@ -3,6 +3,7 @@ import AuthService from "../services/authService.js";
 const srv = new AuthService();
 
 export default class AuthController {
+
     signup = async (req, res) => {
         const payload = req.body;
         const response = await srv.signup(payload);

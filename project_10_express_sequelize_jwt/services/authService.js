@@ -1,6 +1,11 @@
 import db from "./databaseService.js";
+import jwt from "jsonwebtoken";
+import { env } from 'node:process';
+import { config } from "dotenv";
+config();
 
 export default class AuthService {
+
     signup = async (payload) => {
         if (!(payload.email && payload.password)) {
             return {
@@ -45,10 +50,11 @@ export default class AuthService {
                 };
             }
 
-            // FIXME: выдать jwt
+            const token = jwt.sign({ sub: { id: user.id, login: user.login } }, env.JWT_SECRET, { expiresIn: env.JWT_EXPIRES_IN });
+
             return {
                 status: 'success',
-                data: { jwt: 'Fixme', user }
+                data: { token }
             };
         } catch (error) {
             return {
