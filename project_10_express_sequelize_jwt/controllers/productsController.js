@@ -11,7 +11,12 @@ export default class ProductsController {
 
     // First variant jwt verify
     get = async (req, res) => {
-        const token = req.headers.authorization.split(' ').pop();
+        let token = '';
+
+        if(req.headers.authorization) {
+            token = req.headers.authorization.split(' ').pop();
+        }
+
         jwt.verify(token, env.JWT_SECRET, async (err, decoded) => {
             if (err) {
                 res.status(401).send({status: err});
