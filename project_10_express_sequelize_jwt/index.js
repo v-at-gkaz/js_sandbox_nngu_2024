@@ -4,8 +4,11 @@ import bodyParser from "body-parser";
 import { config } from "dotenv";
 config();
 
+import AuthController from "./controllers/authController.js";
 import ProductsController from "./controllers/productsController.js";
 import CustomersController from "./controllers/customersController.js";
+
+const authCtrl = new AuthController();
 const productsCtrl = new ProductsController();
 const customersCtrl = new CustomersController();
 
@@ -16,6 +19,10 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 // backend:
+
+// Auth
+app.post('/api/auth/signup', authCtrl.signup);
+app.post('/api/auth/signin', authCtrl.signin);
 
 // Products
 app.get('/api/products', productsCtrl.get);
