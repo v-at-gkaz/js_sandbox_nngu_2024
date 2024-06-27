@@ -13,11 +13,30 @@
 
 <button id="click-me">Click Me</button>
 
+
+<br />
+<br />
+
+<textarea rows="5" cols="35" id="token-value"></textarea>
+<br />
+<button id="set-token">Set Token</button>
+
+<br />
+<br />
+
+<button id="remove-token">Remove Token</button>
+
 <script>
     document.querySelector("#click-me").addEventListener('click', () => {
+
+        const token = localStorage.getItem('jwt');
+
         const requestOptions = {
             method: "GET",
-            redirect: "follow"
+            redirect: "follow",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
         };
 
         fetch("/api/products", requestOptions)
@@ -25,6 +44,16 @@
             .then((result) => console.log(result))
             .catch((error) => console.error(error));
     });
+
+    document.querySelector("#set-token").addEventListener('click', () => {
+        const tokenValue = document.querySelector("#token-value").value;
+        localStorage.setItem('jwt', tokenValue);
+    });
+
+    document.querySelector("#remove-token").addEventListener('click', () => {
+        localStorage.removeItem('jwt');
+    });
+
 </script>
 
 </body>
